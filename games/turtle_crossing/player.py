@@ -1,6 +1,5 @@
 import pygame
 
-
 class Player:
     def __init__(self, start_x: int, start_y: int):
         self.width = 22
@@ -12,6 +11,15 @@ class Player:
 
     def move_up(self):
         self.rect.y -= self.move_step
+
+    def move_down(self):
+        self.rect.y += self.move_step
+
+    def move_left(self):
+        self.rect.x -= self.move_step
+
+    def move_right(self):
+        self.rect.x += self.move_step
 
     def reset_position(self):
         self.rect.topleft = (self.start_x, self.start_y)

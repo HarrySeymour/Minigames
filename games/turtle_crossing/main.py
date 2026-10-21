@@ -9,7 +9,7 @@ def run(screen: pygame.Surface):
     clock = pygame.time.Clock()
     width, height = screen.get_size()
 
-    player = Player(width // 2 - 11, height - 50)
+    player = Player(width // 2 - 11, height - 40)
     cars = CarManager(width, height)
     scoreboard = Scoreboard()
 
@@ -29,8 +29,16 @@ def run(screen: pygame.Surface):
                 if state == "start" and event.key in (pygame.K_SPACE, pygame.K_RETURN):
                     state = "playing"
 
-                elif state == "playing" and event.key in (pygame.K_UP, pygame.K_w):
-                    player.move_up()
+                elif (state == "playing"):
+                    if event.key in (pygame.K_UP, pygame.K_w):
+                        player.move_up()
+                    if event.key in (pygame.K_DOWN, pygame.K_s):
+                        player.move_down()
+                    if event.key in (pygame.K_LEFT, pygame.K_a):
+                        player.move_left()
+                    if event.key in (pygame.K_RIGHT, pygame.K_d):
+                        player.move_right()
+
 
                 elif state == "game_over" and event.key == pygame.K_r:
                     player = Player(width // 2 - 11, height - 50)
